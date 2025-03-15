@@ -1,0 +1,24 @@
+<div class="task-list-container">
+  <h2>Liste des Tâches</h2>
+
+  <!-- Message d'erreur en cas de problème -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <div class="task-container">
+    <div class="task-card" *ngFor="let task of tasks; trackBy: trackByTaskId">
+      <h3>{{ task.titre }}</h3>
+      <p>{{ task.description }}</p>
+
+      <p><strong>Projet :</strong> {{ task.projet?.nom || 'Non assigné' }}</p>
+      <p><strong>Assignee :</strong> {{ task.assignee?.nom || 'Non assigné' }}</p>
+      <p><strong>Statut :</strong> {{ task.statut }}</p>
+      <p><strong>Échéance :</strong> {{ task.dateEcheance | date:'short' }}</p>
+      
+      <div class="task-actions">
+        <button (click)="deleteTask(task.id!)" class="delete-btn">Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>

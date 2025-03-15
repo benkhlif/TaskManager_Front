@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Liste des Projets</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Statut</th>
+        <th>Manager</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let projet of projets">
+        <td>{{ projet.id }}</td>
+        <td>{{ projet.nom }}</td>
+        <td>{{ projet.description }}</td>
+        <td>{{ projet.statut }}</td>
+        <td>{{ projet.manager?.nom || 'N/A' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
