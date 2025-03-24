@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 export interface User {
-  id: number;
+   id: number;
   nom: string;
   email: string;
-  role: string;
+  password: string;
+  role: string; // EMPLOYE, MANAGER, ChefProjet
 }
 
 @Injectable({
@@ -27,5 +27,17 @@ export class UserService {
 
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(this.apiUrl, user);
+  }
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, user);
+  }
+  getChefs(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/chefProjet`);
+  }
+  getEmployee(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/employee`);
   }
 }

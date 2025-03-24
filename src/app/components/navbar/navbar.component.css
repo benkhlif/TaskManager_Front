@@ -1,0 +1,60 @@
+/* Style de la navbar avec animation */
+.navbar {
+  background: linear-gradient(135deg, #075475, #566aab); /* Dégradé bleu-vert */
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: logoAnimation 1s ease-in-out infinite alternate;
+}
+
+@keyframes logoAnimation {
+  0% {
+    transform: scale(1);
+    color: #ffffff;
+  }
+  50% {
+    transform: scale(1.1);
+    color: #f9de70;
+  }
+  100% {
+    transform: scale(1);
+    color: #ffffff;
+  }
+}
+
+.navbar-links {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-item {
+  color: #ffffff;
+  font-size: 18px;
+  text-decoration: none;
+ }
+
+.navbar-item:hover {
+  color: #ffcc00;
+  transform: translateY(-3px); /* Animation k t7ot cursseur ala haja f navbar*/
+}
+
+ 

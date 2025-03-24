@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nom">Nom du Projet</label>
+      <input type="text" id="nom" class="form-control" [(ngModel)]="projet.nom" name="nom" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" [(ngModel)]="projet.description" name="description" required></textarea>
+    </div>
+  
+    <div class="form-group">
+      <label for="statut">Statut</label>
+      <select id="statut" class="form-control" [(ngModel)]="projet.statut" name="statut" required>
+        <option value="EN_COURS">EN_COURS</option>
+        <option value="A_FAIRE">A_FAIRE</option>
+        <option value="TERMINEE">TERMINEE</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="chefProjet">ChefProjet</label>
+      <select id="chefProjet" class="form-control" [(ngModel)]="projet.chefProjet.id" name="chefProjet" required>
+        <option *ngFor="let user of users$ | async" [value]="user.id">{{ user.nom }}</option>
+      </select>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Créer Projet</button>
+  </form>
+  

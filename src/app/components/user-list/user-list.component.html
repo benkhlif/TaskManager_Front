@@ -1,26 +1,26 @@
-<div class="container">
-    <h2>Liste des Utilisateurs</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Email</th>
-          <th>Rôle</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{ user.id }}</td>
-          <td>{{ user.nom }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.role }}</td>
-          <td>
-            <button (click)="deleteUser(user.id)" class="btn btn-danger">Supprimer</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+    <button (click)="onCreate()" class="btn-add">+ Ajouter un utilisateur</button>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.nom }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td class="action-buttons">
+          <button (click)="consulter(user.id)" class="btn view">👁️</button>
+          <button (click)="modifier(user.id)" class="btn edit">✏️</button>
+          <button (click)="supprimer(user.id)" class="btn delete">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+ 

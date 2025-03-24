@@ -1,0 +1,26 @@
+ <div *ngIf="user" class="user-details">
+    <h2>Détails de l'utilisateur</h2>
+  
+    <div class="form-group">
+      <label for="nom">Nom :</label>
+      <p>{{ user.nom }}</p>
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <p>{{ user.email }}</p>
+    </div>
+  
+    <div class="form-group">
+      <label for="role">Rôle :</label>
+      <p>{{ user.role }}</p>
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Mot de passe :</label>
+      <p>{{ user.password }}</p>
+    </div>
+  
+    <a routerLink="/users" class="btn btn-primary">Retour à la liste des utilisateurs</a>
+  </div>
+  

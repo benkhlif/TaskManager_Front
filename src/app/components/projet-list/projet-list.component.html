@@ -1,23 +1,63 @@
 <div class="container">
-  <h2>Liste des Projets</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Description</th>
-        <th>Statut</th>
-        <th>Manager</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let projet of projets">
-        <td>{{ projet.id }}</td>
-        <td>{{ projet.nom }}</td>
-        <td>{{ projet.description }}</td>
-        <td>{{ projet.statut }}</td>
-        <td>{{ projet.manager?.nom || 'N/A' }}</td>
-      </tr>
-    </tbody>
-  </table>
+   <button (click)="onCreate()" class="btn btn-success create-btn">+ Créer un Projet</button>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <div class="project-board">
+    <!-- Colonne des projets à faire -->
+    <div class="project-column todo">
+      <h3>📝 À Faire</h3>
+      <div *ngFor="let projet of projetsAFaire; trackBy: trackByProjectId" class="project-card">
+        <div class="project-header">
+          <h4>{{ projet.nom }}</h4>
+          <span class="status todo-status">À Faire</span>
+        </div>
+        <p>{{ projet.description }}</p>
+        <p><strong>Responsable :</strong> {{ projet.chefProjet?.nom || 'Non assigné' }}</p>
+        <div class="project-actions">
+          <button (click)="modifier(projet.id)" class="btn btn-primary">✏️ Modifier</button>
+          <button (click)="consulter(projet.id)" class="btn btn-info">👀 Voir</button>
+          <button (click)="supprimer(projet.id)" class="btn btn-danger">🗑️ Supprimer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne des projets en cours -->
+    <div class="project-column in-progress">
+      <h3>⚙️ En Cours</h3>
+      <div *ngFor="let projet of projetsEnCours; trackBy: trackByProjectId" class="project-card">
+        <div class="project-header">
+          <h4>{{ projet.nom }}</h4>
+          <span class="status progress-status">En Cours</span>
+        </div>
+        <p>{{ projet.description }}</p>
+        <p><strong>Responsable :</strong> {{ projet.chefProjet?.nom || 'Non assigné' }}</p>
+        <div class="project-actions">
+          <button (click)="modifier(projet.id)" class="btn btn-primary">✏️ Modifier</button>
+          <button (click)="consulter(projet.id)" class="btn btn-info">👀 Voir</button>
+          <button (click)="supprimer(projet.id)" class="btn btn-danger">🗑️ Supprimer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne des projets terminés -->
+    <div class="project-column done">
+      <h3>✅ Terminés</h3>
+      <div *ngFor="let projet of projetsTermines; trackBy: trackByProjectId" class="project-card">
+        <div class="project-header">
+          <h4>{{ projet.nom }}</h4>
+          <span class="status done-status">Terminée</span>
+        </div>
+        <p>{{ projet.description }}</p>
+        <p><strong>Responsable :</strong> {{ projet.chefProjet?.nom || 'Non assigné' }}</p>
+        <div class="project-actions">
+          <button (click)="modifier(projet.id)" class="btn btn-primary">✏️ Modifier</button>
+          <button (click)="consulter(projet.id)" class="btn btn-info">👀 Voir</button>
+          <button (click)="supprimer(projet.id)" class="btn btn-danger">🗑️ Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

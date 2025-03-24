@@ -1,0 +1,35 @@
+<div class="project-container">
+  <!-- En-tête avec Statut et chefProjet -->
+  <header class="project-header">
+    <div class="meta-box">
+      <span class="meta-label">Statut :</span>
+      <span class="meta-value">{{ projet.statut }}</span>
+    </div>
+    <div class="meta-box">
+      <span class="meta-label">chefProjet :</span>
+      <span class="meta-value">{{ projet.chefProjet?.nom || 'Non attribué' }}</span>
+    </div>
+  </header>
+
+  <!-- Corps de la carte de projet -->
+  <div class="project-card">
+    <h1 class="project-title">{{ projet.nom }}</h1>
+    <p class="project-description">{{ projet.description }}</p>
+  </div>
+
+  <!-- Section des tâches associées -->
+  <section class="tasks-section">
+    <h2 class="tasks-title">Tâches associées</h2>
+    <div class="tasks-grid">
+      <div *ngFor="let task of tasks" class="task-card">
+        <a [routerLink]="['/fichetask', task.id]">{{ task.titre }}</a>
+      </div>
+    </div>
+    <div *ngIf="tasks.length === 0" class="no-tasks">
+      <p>Aucune tâche associée à ce projet.</p>
+    </div>
+  </section>
+
+  <!-- Bouton de retour -->
+  <button (click)="retourListe()" class="btn-return">Retour à la liste</button>
+</div>

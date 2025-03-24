@@ -44,4 +44,9 @@ export class TaskService {
   deleteTask(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+    // Récupérer une tâche par son ID
+    getTasksByProject(id: number): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/byProject/${id}`);
+    }
 }

@@ -1,0 +1,79 @@
+ 
+/* Conteneur principal */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #E3ECF9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Groupes de formulaire */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.form-group label {
+  font-weight: bold;
+  color: #34495e;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Champs de saisie */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Focus sur les champs */
+.form-control:focus {
+  border-color: #2980b9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+}
+
+/* Bouton de soumission */
+.btn-primary {
+  background-color: #2980b9;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hover sur le bouton */
+.btn-primary:hover {
+  background-color: #1c5980;
+}
+ 
+/* Animation de fond */
+@keyframes backgroundAnimation {
+  0% {
+    background-color: #2980b9;
+  }
+  50% {
+    background-color: #3498db;
+  }
+  100% {
+    background-color: #2980b9;
+  }
+}

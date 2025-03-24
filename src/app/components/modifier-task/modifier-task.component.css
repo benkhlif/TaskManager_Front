@@ -1,0 +1,87 @@
+/* Conteneur principal */
+.container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #E3ECF9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Titre de la page */
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+/* Formulaire */
+form {
+  
+  display: grid;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Groupes de champs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Label des champs */
+.form-group label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Champs de saisie */
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+/* Effet de focus sur les champs de saisie */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Champs de texte (description) */
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+  background-color: #0056b3;
+
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+/* Effet de survol sur le bouton */
+button[type="submit"]:hover {
+  background-color: #007bff;
+}
+
+ 

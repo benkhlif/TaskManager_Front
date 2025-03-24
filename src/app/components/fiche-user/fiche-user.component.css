@@ -1,0 +1,65 @@
+/* Conteneur principal des détails de l'utilisateur */
+.user-details {
+    width: 60%;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #E3ECF9;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombre douce pour l'élévation */
+  }
+  
+  /* Titre de la section */
+  .user-details h2 {
+    text-align: center;
+    color: #333333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Style des groupes de champs */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Label des champs */
+  label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* Valeur des champs (p) */
+  p {
+    font-size: 1rem;
+    color: #555555;
+    margin: 5px 0;
+  }
+  
+  /* Bouton de retour */
+  a.btn.btn-primary {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #032a53;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Effet de survol du bouton */
+  a.btn.btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Espacement entre les sections */
+  .user-details > div {
+    margin-bottom: 15px;
+  }
+  

@@ -1,0 +1,83 @@
+/* Conteneur principal du formulaire */
+.container {
+    background-color: #b8dcff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Titre du formulaire */
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  /* Style des groupes de champs de formulaire */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Style des labels */
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Champs de texte, de sélection, et de textarea */
+  input[type="text"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  /* Style de focus sur les champs de saisie */
+  input[type="text"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Style du bouton de soumission */
+  button.btn-primary {
+    background-color: #041425;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Hover sur le bouton */
+  button.btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+ 
+  
+  input:valid,
+  textarea:valid,
+  select:valid {
+    border-color: #080113;
+  }
+  

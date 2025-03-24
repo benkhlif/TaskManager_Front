@@ -6,7 +6,7 @@ export interface Projet {
   nom: string;
   description: string;
   statut: string;
-  manager?: { id: number, nom: string, email: string, role: string };
+  chefProjet?: { id: number, nom: string, email: string, role: string };
 }
 @Injectable({
   providedIn: 'root'

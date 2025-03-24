@@ -1,23 +1,65 @@
 <div class="task-list-container">
-  <h2>Liste des Tâches</h2>
+   <button (click)="onCreate()" class="btn btn-success create-btn">+ Ajouter une Tâche</button>
 
-  <!-- Message d'erreur en cas de problème -->
   <div *ngIf="errorMessage" class="error">
     {{ errorMessage }}
   </div>
 
-  <div class="task-container">
-    <div class="task-card" *ngFor="let task of tasks; trackBy: trackByTaskId">
-      <h3>{{ task.titre }}</h3>
-      <p>{{ task.description }}</p>
+  <div class="task-board">
+    <!-- Colonne des tâches à faire -->
+    <div class="task-column todo">
+      <h3>📝 À Faire</h3>
+      <div *ngFor="let task of tasksAFaire; trackBy: trackByTaskId" class="task-card">
+        <div class="task-header">
+          <h4>{{ task.titre }}</h4>
+          <span class="status todo-status">À Faire</span>
+        </div>
+        <p>{{ task.description }}</p>
+        <p><strong>Projet :</strong> {{ task.projet?.nom || 'Non assigné' }}</p>
+        <p><strong>Échéance :</strong> {{ task.dateEcheance | date:'short' }}</p>
+        <div class="task-actions">
+          <button (click)="modifier(task.id!)" class="btn btn-primary">✏️ Modifier</button>
+          <button (click)="consulter(task.id!)" class="btn btn-info">👀 Voir</button>
+          <button (click)="deleteTask(task.id!)" class="btn btn-danger">🗑️ Supprimer</button>
+        </div>
+      </div>
+    </div>
 
-      <p><strong>Projet :</strong> {{ task.projet?.nom || 'Non assigné' }}</p>
-      <p><strong>Assignee :</strong> {{ task.assignee?.nom || 'Non assigné' }}</p>
-      <p><strong>Statut :</strong> {{ task.statut }}</p>
-      <p><strong>Échéance :</strong> {{ task.dateEcheance | date:'short' }}</p>
-      
-      <div class="task-actions">
-        <button (click)="deleteTask(task.id!)" class="delete-btn">Supprimer</button>
+    <!-- Colonne des tâches en cours -->
+    <div class="task-column in-progress">
+      <h3>⚙️ En Cours</h3>
+      <div *ngFor="let task of tasksEnCours; trackBy: trackByTaskId" class="task-card">
+        <div class="task-header">
+          <h4>{{ task.titre }}</h4>
+          <span class="status progress-status">En Cours</span>
+        </div>
+        <p>{{ task.description }}</p>
+        <p><strong>Projet :</strong> {{ task.projet?.nom || 'Non assigné' }}</p>
+        <p><strong>Échéance :</strong> {{ task.dateEcheance | date:'short' }}</p>
+        <div class="task-actions">
+          <button (click)="modifier(task.id!)" class="btn btn-primary">✏️ Modifier</button>
+          <button (click)="consulter(task.id!)" class="btn btn-info">👀 Voir</button>
+          <button (click)="deleteTask(task.id!)" class="btn btn-danger">🗑️ Supprimer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne des tâches terminées -->
+    <div class="task-column done">
+      <h3>✅ Terminées</h3>
+      <div *ngFor="let task of tasksTerminees; trackBy: trackByTaskId" class="task-card">
+        <div class="task-header">
+          <h4>{{ task.titre }}</h4>
+          <span class="status done-status">Terminée</span>
+        </div>
+        <p>{{ task.description }}</p>
+        <p><strong>Projet :</strong> {{ task.projet?.nom || 'Non assigné' }}</p>
+        <p><strong>Échéance :</strong> {{ task.dateEcheance | date:'short' }}</p>
+        <div class="task-actions">
+          <button (click)="modifier(task.id!)" class="btn btn-primary">✏️ Modifier</button>
+          <button (click)="consulter(task.id!)" class="btn btn-info">👀 Voir</button>
+          <button (click)="deleteTask(task.id!)" class="btn btn-danger">🗑️ Supprimer</button>
+        </div>
       </div>
     </div>
   </div>

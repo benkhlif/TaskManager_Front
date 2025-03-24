@@ -1,55 +1,176 @@
+/*   Style général */
 .task-list-container {
-  padding: 20px;
-}
-
-.error {
-  color: red;
-  font-weight: bold;
   text-align: center;
-  margin-bottom: 10px;
-}
-
-.task-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #F5F7FA, #C3CFE2); /* Dégradé doux */
+  min-height: 100vh;
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
+/*   Bouton Ajouter */
+.create-btn {
+  background: linear-gradient(135deg, #357ABD, #285A8E);
+  color: white;
+  font-weight: bold;
+  padding: 14px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.create-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #285A8E, #1F4E79);
+}
+
+/*   Tableau des tâches */
+.task-board {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 20px;
+  width: 90%;
+}
+
+/*   Colonnes */
+.task-column {
+  flex: 1;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.6); /* Effet Glassmorphism */
+  backdrop-filter: blur(10px);
+  min-height: 350px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+}
+
+.task-column:hover {
+  transform: scale(1.03);
+}
+
+/* Titres des colonnes */
+.task-column h3 {
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*   Cartes des tâches */
 .task-card {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  width: 300px;
-  transition: transform 0.2s ease-in-out;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .task-card:hover {
   transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-h3 {
-  color: #333;
+/*   En-tête de la tâche */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
+/* 🏷 Badges de statut */
+.status {
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.todo-status {
+  background-color: #E3ECF9;
+  color: #1F4E79;
+}
+
+.progress-status {
+  background-color: #B3D1FF;
+  color: #1A5276;
+}
+
+.done-status {
+  background-color: #C7EFD6;
+  color: #155724;
+}
+
+/*   Effet hover sur badges */
+.status:hover {
+  filter: brightness(0.9);
+}
+
+/*  Actions des tâches */
 .task-actions {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
-  justify-content: flex-end;
+  gap: 10px;
+  justify-content: center;
 }
 
-.delete-btn {
-  background: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 5px;
+/*   Boutons */
+.btn {
+  padding: 10px 16px;
   font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
 }
 
-.delete-btn:hover {
-  background: #c82333;
+.btn-primary {
+  background: linear-gradient(135deg, #357ABD, #285A8E);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #285A8E, #1F4E79);
+  transform: scale(1.05);
+}
+
+.btn-info {
+  background: linear-gradient(135deg, #17a2b8, #117a8b);
+  color: white;
+}
+
+.btn-info:hover {
+  background: linear-gradient(135deg, #117a8b, #0d5c6b);
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #DC3545, #BD2130);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #BD2130, #A00E1E);
+  transform: scale(1.05);
+}
+
+/* 🏗 Couleurs des colonnes */
+.todo {
+  background-color: #E3ECF9;
+}
+
+.in-progress {
+  background-color: #B3D1FF;
+}
+
+.done {
+  background-color: #c3ccff;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService, User } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { UserService, User } from 'src/app/services/user.service';
 export class UserListComponent implements OnInit {
   users: User[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,     private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -26,7 +28,7 @@ export class UserListComponent implements OnInit {
     );
   }
 
-  deleteUser(id: number): void {
+  supprimer(id: number): void {
     if (confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) {
       this.userService.deleteUser(id).subscribe(
         () => {
@@ -37,5 +39,14 @@ export class UserListComponent implements OnInit {
         }
       );
     }
+  }
+  onCreate(): void {
+    this.router.navigate(['/creeruser']);
+  }
+  modifier(projetId: number): void {
+    this.router.navigate(['/modifieruser', projetId]);
+  }
+  consulter(projetId: number): void {
+    this.router.navigate([`/ficheuser`, projetId]);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjetService } from 'src/app/services/projet.service';
 import { Task, TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,7 +17,9 @@ export class TaskListComponent implements OnInit {
   constructor(
     private taskService: TaskService,
     private projetService: ProjetService,
-    private userService: UserService
+    private userService: UserService,
+        private router: Router
+    
   ) {}
 
   ngOnInit(): void {
@@ -64,4 +67,26 @@ export class TaskListComponent implements OnInit {
       });
     }
   }
+  onCreate(): void {
+    this.router.navigate(['/creertask']);
+  }
+  modifier(projetId: number): void {
+    this.router.navigate(['/modifiertask', projetId]);
+  }
+  consulter(projetId: number): void {
+    this.router.navigate([`/fichetask`, projetId]);
+  }
+  get tasksAFaire(): Task[] {
+    return this.tasks?.filter(t => t.statut === 'A_FAIRE') || [];
+  }
+  
+  get tasksEnCours(): Task[] {
+    return this.tasks?.filter(t => t.statut === 'EN_COURS') || [];
+  }
+  
+  get tasksTerminees(): Task[] {
+    return this.tasks?.filter(t => t.statut === 'TERMINEE') || [];
+  }
+  
+  
 }

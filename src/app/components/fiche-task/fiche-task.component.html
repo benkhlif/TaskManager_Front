@@ -1,0 +1,12 @@
+<div class="task-container">
+  <div class="task-card">
+    <h3  >{{ task?.titre }}</h3>
+    <p  >{{ task?.description }}</p>
+    <p  >Statut: <span>{{ task?.statut }}</span></p>
+    <p  >Échéance: <span>{{ task?.dateEcheance }}</span></p>
+    <p  *ngIf="task?.assignee">Assigné à: <span>{{ task?.assignee?.nom }}</span></p>
+    <p  *ngIf="task?.projet">Projet: <span>{{ task?.projet?.nom }}</span></p> 
+     <button class="back-button" (click)="retourListe()">Retour à la liste</button>
+
+  </div>
+</div>

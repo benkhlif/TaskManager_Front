@@ -1,0 +1,75 @@
+/* Conteneur principal */
+.task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+/* Carte de la tâche */
+.task-card {
+  background-color: #E3ECF9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease;
+}
+
+/* Effet de survol sur la carte */
+.task-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Titre de la tâche */
+.task-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+ 
+/* Bouton retour */
+.back-button {
+  background-color: #073d76;
+
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Effet de survol sur le bouton */
+.back-button:hover {
+  background-color: #007bff;
+}
+
+/* Adaptation des éléments en fonction des écrans */
+@media (max-width: 768px) {
+  .task-card {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .task-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .task-card p {
+    font-size: 0.9rem;
+  }
+
+  .back-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
