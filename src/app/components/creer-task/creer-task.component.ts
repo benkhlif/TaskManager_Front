@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 export class CreerTaskComponent {
   task: any = { assignee: {}, projet: {} };
   users$ = this.userService.getEmployee();  // Observable pour la liste des utilisateurs
-  projets$ = this.projetService.getProjets();  // Observable pour la liste des projets
+  projets$ = this.projetService.getMyProjets();  // Observable pour la liste des projets
 
   constructor(
     private taskService: TaskService,

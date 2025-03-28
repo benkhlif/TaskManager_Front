@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';   
 
 @Component({
@@ -13,12 +14,13 @@ export class CreerUserComponent {
 
   constructor(
     private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
   // Soumettre le formulaire pour créer l'utilisateur
   onSubmit(): void {
-    this.userService.createUser(this.user).subscribe({
+    this.authService.register(this.user).subscribe({
       next: () => {
         alert('Utilisateur créé avec succès');
         this.router.navigate(['/users']);  // Redirige vers la liste des utilisateurs après la création

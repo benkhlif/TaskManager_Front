@@ -20,6 +20,8 @@ import { FicheTaskComponent } from './components/fiche-task/fiche-task.component
 import { DatePipe } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule,
-     HttpClientModule  ,ReactiveFormsModule  
+     HttpClientModule  ,ReactiveFormsModule, BrowserAnimationsModule, MatSnackBarModule,  
   ],
   providers: [DatePipe],  
     bootstrap: [AppComponent]

@@ -6,7 +6,7 @@ export interface User {
   nom: string;
   email: string;
   password: string;
-  role: string; // EMPLOYE, MANAGER, ChefProjet
+  role: string; // EMPLOYE, MANAGER, CHEF_PROJET
 }
 
 @Injectable({

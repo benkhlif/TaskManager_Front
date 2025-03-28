@@ -1,11 +1,18 @@
 <nav class="navbar">
   <div class="navbar-container">
-    <a  class="navbar-logo">TaskManager</a>
+    <a class="navbar-logo">TaskManager</a>
     <div class="navbar-links">
-      <a href="#" class="navbar-item">Accueil</a>
-      <a href="tasks" class="navbar-item">Tâches</a>
-      <a href="projets" class="navbar-item">Projets</a>
-      <a href="users" class="navbar-item">Utilisateurs</a>
+      <!-- Afficher uniquement pour Employee et supérieurs -->
+      <a *ngIf="isEmployeeOrHigher()" routerLink="/tasks" class="navbar-item">Tâches</a>
+      
+      <!-- Afficher uniquement pour Chef de Projet et supérieurs -->
+      <a *ngIf="isChefProjetOrHigher()" routerLink="/projets" class="navbar-item">Projets</a>
+      
+      <!-- Afficher uniquement pour Manager -->
+      <a *ngIf="isManager()" routerLink="/users" class="navbar-item">Utilisateurs</a>
+      
+      <!-- Bouton de déconnexion accessible à tous -->
+      <a (click)="logout()" class="navbar-item">Déconnexion</a>
     </div>
-   </div>
+  </div>
 </nav>

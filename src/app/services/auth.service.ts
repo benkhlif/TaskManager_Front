@@ -32,9 +32,12 @@ export class AuthService   {
       })
     );
   }
+    // Récupérer le token JWT
+
   get token(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
+  // Décoder le token JWT
 
   get decodedToken(): any {
     const token = this.token;
@@ -49,11 +52,11 @@ export class AuthService   {
     }
   }
 
-  get roles(): string[] {
+   // Méthode pour récupérer le rôle de l'utilisateur à partir du token
+   getRole(): string | null {
     const decodedToken = this.decodedToken;
-    return decodedToken ? decodedToken.roles.split(',') : [];  
+    return decodedToken ? decodedToken.roles : null;
   }
-
   getUserIdByEmail(email: string): Observable<number> {
     return this.http.get<number>(`${BASE_URL}api/customers/idByEmail?email=${email}`);
   }
@@ -99,12 +102,7 @@ export class AuthService   {
     }
   }
 
-  hasRole(role: string): boolean {
-    return this.roles.includes(role);
-  }
-  isAdmin(): boolean {
-    return this.hasRole('ADMIN'); 
-  }
-
+  
+ 
    
 }

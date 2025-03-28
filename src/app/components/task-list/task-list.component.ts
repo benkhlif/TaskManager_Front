@@ -1,5 +1,6 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProjetService } from 'src/app/services/projet.service';
 import { Task, TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,6 +16,7 @@ export class TaskListComponent implements OnInit {
   trackByTaskId!: TrackByFunction<Task>;
 
   constructor(
+    private authService: AuthService,
     private taskService: TaskService,
     private projetService: ProjetService,
     private userService: UserService,
@@ -28,16 +30,27 @@ export class TaskListComponent implements OnInit {
 
   // Charger les tâches et compléter les infos si nécessaire
   loadTasks(): void {
-    this.taskService.getTasks().subscribe({
-      next: (tasks) => {
-        this.tasks = tasks;
-        this.tasks.forEach(task => {
-          this.fetchProjetDetails(task);
-          this.fetchAssigneeDetails(task);
-        });
-      },
-      error: () => this.errorMessage = 'Erreur lors du chargement des tâches'
-    });
+    const role = this.authService.getRole();  // Vous devez avoir une méthode pour récupérer le rôle de l'utilisateur
+
+    if (role === 'employee') {
+      this.taskService.getMyTasks().subscribe(
+        tasks => this.tasks = tasks,
+        error => this.errorMessage = 'Erreur de chargement des tâches.'
+      );
+    } else if (role === 'ChefProjet') {
+      this.taskService.getChefDeProjetTasks().subscribe(
+        tasks => this.tasks = tasks,
+        error => this.errorMessage = 'Erreur de chargement des tâches.'
+      );
+    } else if (role === 'MANAGER') {
+      this.taskService.getTasks().subscribe(
+        tasks => this.tasks = tasks,
+        error => this.errorMessage = 'Erreur de chargement des tâches.'
+      );
+    }
+    else {
+      this.errorMessage = 'Rôle inconnu ou non autorisé.';
+    }
   }
 
   // Récupérer les détails du projet si ce n'est qu'un ID
