@@ -3,21 +3,25 @@
   <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
     <div class="form-group">
       <label for="titre">Titre</label>
-      <input type="text" id="titre" [(ngModel)]="task.titre" name="titre" class="form-control" required />
+      <input type="text" id="titre" [(ngModel)]="task.titre" name="titre" class="form-control"
+        [disabled]="userRole === 'EMPLOYE' || userRole === 'ChefProjet'" required />
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea id="description" [(ngModel)]="task.description" name="description" class="form-control" required></textarea>
+      <textarea id="description" [(ngModel)]="task.description" name="description" class="form-control"
+        [disabled]="userRole === 'EMPLOYE' || userRole === 'ChefProjet'" required></textarea>
     </div>
 
     <div class="form-group">
       <label for="statut">Statut</label>
-      <select id="statut" [(ngModel)]="task.statut" name="statut" class="form-control" required>
-        <option value="A_FAIRE">A FAIRE</option>
-        <option value="EN_COURS">EN COURS</option>
-        <option value="TERMINEE">TERMINEE</option>
-      </select>
+      <select id="statut" [(ngModel)]="task.statut" name="statut" class="form-control"
+      [disabled]="userRole === 'EMPLOYE'" required>
+<option value="A_FAIRE">A FAIRE</option>
+<option value="EN_COURS">EN COURS</option>
+<option value="TERMINEE">TERMINEE</option>
+</select>
+
     </div>
 
     <div class="form-group">
@@ -27,15 +31,17 @@
 
     <div class="form-group">
       <label for="assignee">Assignee</label>
-      <select id="assignee" [(ngModel)]="task.assignee.id" name="assignee" class="form-control" required>
-        <option *ngFor="let user of users$ | async" [value]="user.id">{{ user.nom }}</option>
+      <select id="assignee" [(ngModel)]="task.assignee.id" name="assignee" class="form-control"
+        [disabled]="userRole === 'EMPLOYE' || userRole === 'ChefProjet'" required>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.nom }}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="projet">Projet</label>
-      <select id="projet" [(ngModel)]="task.projet.id" name="projet" class="form-control" required>
-        <option *ngFor="let projet of projets$ | async" [value]="projet.id">{{ projet.nom }}</option>
+      <select id="projet" [(ngModel)]="task.projet.id" name="projet" class="form-control"
+        [disabled]="userRole === 'EMPLOYE' || userRole === 'ChefProjet'" required>
+        <option *ngFor="let projet of projets" [value]="projet.id">{{ projet.nom }}</option>
       </select>
     </div>
 

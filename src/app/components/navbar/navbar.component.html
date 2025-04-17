@@ -3,16 +3,25 @@
     <a class="navbar-logo">TaskManager</a>
     <div class="navbar-links">
       <!-- Afficher uniquement pour Employee et supérieurs -->
-      <a *ngIf="isEmployeeOrHigher()" routerLink="/tasks" class="navbar-item">Tâches</a>
-      
+      <a *ngIf="isEmployeeOrHigher()" routerLink="/tasks" class="navbar-item">📑 Tâches ｜</a>
+      <a *ngIf="isEmplyee()" routerLink="/statistique" class="navbar-item">📈 Statistiques et suivi 
+      </a>
+
       <!-- Afficher uniquement pour Chef de Projet et supérieurs -->
-      <a *ngIf="isChefProjetOrHigher()" routerLink="/projets" class="navbar-item">Projets</a>
+      <a *ngIf="isChefProjetOrHigher()" routerLink="/projets" class="navbar-item">🎯 Projets ｜</a>
       
       <!-- Afficher uniquement pour Manager -->
-      <a *ngIf="isManager()" routerLink="/users" class="navbar-item">Utilisateurs</a>
-      
+      <a *ngIf="isManager()" routerLink="/users" class="navbar-item">👩🏻‍💻 Utilisateurs ｜</a>
+      <a *ngIf="isManager()" routerLink="/calendrier" class="navbar-item">🗓️ calendrier ｜</a>
+
+        <!-- Afficher notifications uniquement pour Chef de Projet -->
+       <a *ngIf="isChefProjet()" routerLink="/notification" class="navbar-item notification-link">
+        🔔 Notifications
+        <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span> <!-- Affiche le nombre de notifications non lues -->
+      </a>
+ 
       <!-- Bouton de déconnexion accessible à tous -->
-      <a (click)="logout()" class="navbar-item">Déconnexion</a>
+      <a (click)="logout()" class="navbar-item">🔒 Déconnexion</a>
     </div>
   </div>
 </nav>

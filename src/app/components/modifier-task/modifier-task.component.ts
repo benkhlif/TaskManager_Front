@@ -4,6 +4,7 @@ import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
 import { ProjetService } from 'src/app/services/projet.service';
 import { DatePipe } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-modifier-task',
@@ -11,58 +12,110 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./modifier-task.component.css']
 })
 export class ModifierTaskComponent implements OnInit {
-  task: any = { assignee: {}, projet: {} };  // Initialisation de la tâche
-  users$ = this.userService.getEmployee();  // Observable pour la liste des utilisateurs
-  projets$ = this.projetService.getProjets();  // Observable pour la liste des projets
-  taskId: number = 0;  // Identifiant de la tâche à modifier
+  task: any = {
+    id: null,
+    titre: '',
+    description: '',
+    statut: '',
+    assignee: { id: 0, nom: '', email: '', role: '' },
+    projet: { id: 0, nom: '' },
+    dateEcheance: null
+  };
+  users: any[] = [];
+  projets: any[] = [];
+  statutOptions: string[] = ['A_FAIRE', 'EN_COURS', 'TERMINEE'];
+  userRole: string | null = null; // Récupérer le rôle de l'utilisateur
 
   constructor(
     private taskService: TaskService,
     private userService: UserService,
     private projetService: ProjetService,
+    private route: ActivatedRoute,
     private router: Router,
-    private route: ActivatedRoute, // Pour accéder aux paramètres de la route
-    private datePipe: DatePipe // Pour formater la date
+    private authService: AuthService // Service d'authentification
   ) {}
 
   ngOnInit(): void {
-    // Récupérer l'ID de la tâche à modifier depuis l'URL
-    this.route.paramMap.subscribe(params => {
-      this.taskId = +params.get('id')!;
-      this.getTaskDetails();  // Charger les détails de la tâche
-    });
+    this.userRole = this.authService.getRole(); // Récupérer le rôle de l'utilisateur
+    this.getTaskDetails();
+    this.getUsers();
+    this.getMyProjets();
   }
 
-  // Charger les détails de la tâche
   getTaskDetails(): void {
-    this.taskService.getTaskById(this.taskId).subscribe({
-      next: (task) => {
-        this.task = task;
-        this.task.dateEcheance = this.datePipe.transform(task.dateEcheance, 'yyyy-MM-ddTHH:mm:ss'); // Formater la date
+    const taskId = +this.route.snapshot.paramMap.get('id')!;  // Récupérer l'ID de la tâche depuis l'URL
+    this.taskService.getTaskById(taskId).subscribe(
+      (data) => {
+        this.task = {
+          ...data,
+          assignee: data.assignee || { id: 0, nom: '', email: '', role: '' },
+          projet: data.projet || { id: 0, nom: '' }
+        };
+        this.applyRolePermissions();
       },
-      error: (err) => {
-        alert('Erreur lors du chargement de la tâche');
-        console.error('Erreur:', err);
+      (error) => {
+        console.error('Erreur lors de la récupération de la tâche', error);
       }
-    });
+    );
   }
 
-  // Soumettre le formulaire de modification de la tâche
-  onSubmit(): void {
-    if (this.task.dateEcheance) {
-      // Formater la date avant l'envoi
-      this.task.dateEcheance = this.datePipe.transform(this.task.dateEcheance, 'yyyy-MM-ddTHH:mm:ss');
-    }
+  getUsers(): void {
+    this.userService.getEmployee().subscribe(
+      (data) => { this.users = data; },
+      (error) => { console.error('Erreur lors de la récupération des utilisateurs', error); }
+    );
+  }
 
-    this.taskService.updateTask(this.taskId, this.task).subscribe({
-      next: () => {
+  getMyProjets(): void {
+    this.projetService.getMyProjets().subscribe(
+      (data) => { this.projets = data; },
+      (error) => { console.error('Erreur lors de la récupération des projets', error); }
+    );
+  }
+
+  applyRolePermissions(): void {
+    // Si l'utilisateur est un Employé, tous les champs sauf le statut sont désactivés
+    if (this.userRole === 'EMPLOYE') {
+      document.getElementById('titre')?.setAttribute('disabled', 'true');
+      document.getElementById('description')?.setAttribute('disabled', 'true');
+      document.getElementById('assignee')?.setAttribute('disabled', 'true');
+      document.getElementById('projet')?.setAttribute('disabled', 'true');
+      document.getElementById('dateEcheance')?.setAttribute('disabled', 'true');
+      document.getElementById('statut')?.removeAttribute('disabled'); // Le statut reste modifiable
+    }
+  
+    // Si l'utilisateur est un Manager, tous les champs sont désactivés
+    if (this.userRole === 'MANAGER') {
+      document.getElementById('titre')?.setAttribute('disabled', 'true');
+      document.getElementById('description')?.setAttribute('disabled', 'true');
+      document.getElementById('statut')?.setAttribute('disabled', 'true');
+      document.getElementById('assignee')?.setAttribute('disabled', 'true');
+      document.getElementById('projet')?.setAttribute('disabled', 'true');
+      document.getElementById('dateEcheance')?.setAttribute('disabled', 'true');
+    }
+  
+    // Si l'utilisateur est un Chef de Projet, il peut modifier tous les champs
+    if (this.userRole === 'ChefProjet') {
+      document.getElementById('titre')?.removeAttribute('disabled');
+      document.getElementById('description')?.removeAttribute('disabled');
+      document.getElementById('statut')?.removeAttribute('disabled');
+      document.getElementById('assignee')?.removeAttribute('disabled');
+      document.getElementById('projet')?.removeAttribute('disabled');
+      document.getElementById('dateEcheance')?.removeAttribute('disabled');
+    }
+  }
+  
+  onSubmit(): void {
+    this.taskService.updateTask(this.task.id, this.task).subscribe(
+      () => {
         alert('Tâche modifiée avec succès');
         this.router.navigate(['/tasks']);
       },
-      error: (err) => {
-        alert('Erreur lors de la mise à jour de la tâche');
-        console.error('Erreur:', err);
+      (error) => {
+        alert('Erreur lors de la modification de la tâche');
+        console.error('Erreur:', error);
       }
-    });
+    );
   }
 }
+

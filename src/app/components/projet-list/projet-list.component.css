@@ -168,7 +168,4 @@
 .done {
   background-color: #c3ccff;
 } 
-.mat-snack-bar-container {
-  inset-block-start: 20px !important; /* Ajuste la position en haut */
-  position: fixed !important;
-}
+ 

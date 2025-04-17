@@ -1,0 +1,9 @@
+<div class="calendar-container">
+    <label for="projet">🔽 Sélectionner un projet :</label>
+    <select id="projet" [(ngModel)]="selectedProjectId" (change)="onProjectChange()">
+      <option *ngFor="let projet of projets" [value]="projet.id">{{ projet.nom }}</option>
+    </select>
+  
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+  

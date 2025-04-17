@@ -19,7 +19,7 @@ export class AuthService   {
     this._isLoggedIn$.next(!!jwt);
   }
   register(signupRequest: any): Observable<any> {
-    return this.http.post(BASE_URL + 'signup', signupRequest);
+    return this.http.post(BASE_URL + 'signup', signupRequest, { responseType: 'text' });
   }
  
   login(loginRequest: any): Observable<any> {
@@ -58,7 +58,7 @@ export class AuthService   {
     return decodedToken ? decodedToken.roles : null;
   }
   getUserIdByEmail(email: string): Observable<number> {
-    return this.http.get<number>(`${BASE_URL}api/customers/idByEmail?email=${email}`);
+    return this.http.get<number>(`${BASE_URL}api/idByEmail?email=${email}`);
   }
   
 

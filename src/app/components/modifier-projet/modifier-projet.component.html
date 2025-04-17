@@ -1,31 +1,30 @@
- <div class="container">
-    <h2>Modifier le projet</h2>
-    <form (ngSubmit)="onSubmit()" #projetForm="ngForm">
-      <div class="form-group">
-        <label for="nom">Nom du projet</label>
-        <input type="text" class="form-control" id="nom" [(ngModel)]="projet.nom" name="nom" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" [(ngModel)]="projet.description" name="description" rows="3" required></textarea>
-      </div>
-  
-      <div class="form-group">
-        <label for="statut">Statut</label>
-        <select class="form-control" id="statut" [(ngModel)]="projet.statut" name="statut" required>
-          <option *ngFor="let statut of statutOptions" [value]="statut">{{ statut }}</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="chefProjet">chefProjet</label>
-        <select class="form-control" id="chefProjet" [(ngModel)]="projet.chefProjet.id" name="chefProjet" required>
-          <option *ngFor="let user of users" [value]="user.id">{{ user.nom }}</option>
-        </select>
-      </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="!projetForm.form.valid">Enregistrer</button>
-    </form>
-  </div>
-  
+<div class="container">
+  <h2>Modifier le projet</h2>
+  <form (ngSubmit)="onSubmit()" #projetForm="ngForm">
+    <div class="form-group">
+      <label for="nom">Nom du projet</label>
+      <input type="text" class="form-control" id="nom" [(ngModel)]="projet.nom" name="nom" required [disabled]="userRole !== 'Manager'">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" [(ngModel)]="projet.description" name="description" rows="3" required [disabled]="userRole === 'Employe' || userRole === 'ChefProjet'"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="statut">Statut</label>
+      <select class="form-control" id="statut" [(ngModel)]="projet.statut" name="statut" required [disabled]="userRole === 'EMPLOYE'">
+        <option *ngFor="let statut of statutOptions" [value]="statut">{{ statut }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="chefProjet">Chef de projet</label>
+      <select class="form-control" id="chefProjet" [(ngModel)]="projet.chefProjet.id" name="chefProjet" required [disabled]="userRole !== 'Manager'">
+        <option *ngFor="let user of users" [value]="user.id">{{ user.nom }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!projetForm.form.valid">Enregistrer</button>
+  </form>
+</div>

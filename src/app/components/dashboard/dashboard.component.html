@@ -1,0 +1,74 @@
+<div class="dashboard">
+  <!-- Section des statistiques -->
+  <div class="stats">
+    <div class="stat-card">
+      <h3>📝 Tâches à faire</h3>
+      <p>{{ tasksToDo }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>⚙️ Tâches en cours</h3>
+      <p>{{ tasksInProgress }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>✅ Tâches complétées</h3>
+      <p>{{ tasksCompleted }}</p>
+    </div>
+  </div>
+
+<!-- Section de la progression des tâches avec une barre -->
+<div class="progress-section">
+  <h2>Progression des tâches</h2>
+  <div class="progress-bar-container">
+    <div class="progress-bar" 
+         [style.width]="progress + '%'" 
+         [ngStyle]="{'background-color': getProgressColor(progress)}">
+      <span class="percentage">{{ progress | number: '1.2-2' }}%</span>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Section des tâches à venir et en retard -->
+  <div class="tasks-sections">
+    <div class="tasks-section upcoming-tasks">
+      <h2> 🗓️⏳ Tâches à venir</h2>
+      <ul *ngIf="upcomingTasks.length > 0; else noUpcomingTasks">
+        <li *ngFor="let task of upcomingTasks" class="task-item upcoming" (click)="showTaskDetails(task.id)">
+          <div class="task-button">
+            <strong>{{ task.titre }}</strong> - {{ task.dateEcheance }}
+          </div>
+        </li>
+      </ul>
+      <ng-template #noUpcomingTasks>
+        <p>Aucune tâche à venir.</p>
+      </ng-template>
+    </div>
+
+    <div class="tasks-section overdue-tasks">
+      <h2> 🕒⚠️  Tâches en retard</h2>
+      <ul *ngIf="overdueTasks.length > 0; else noOverdueTasks">
+        <li *ngFor="let task of overdueTasks" class="task-item overdue" (click)="showTaskDetails(task.id)">
+          <div class="task-button">
+            <strong>{{ task.titre }}</strong> - {{ task.dateEcheance }}
+          </div>
+        </li>
+      </ul>
+      <ng-template #noOverdueTasks>
+        <p>Aucune tâche en retard.</p>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Détails de la tâche sélectionnée -->
+  <div class="task-details-modal" *ngIf="selectedTask">
+    <div class="modal-overlay" (click)="closeTaskDetails()"></div>
+    <div class="modal-content">
+      <h2>Détails de la tâche</h2>
+      <p><strong>Titre:</strong> {{ selectedTask.titre }}</p>
+      <p><strong>Description:</strong> {{ selectedTask.description }}</p>
+      <p><strong>Statut:</strong> {{ selectedTask.statut }}</p>
+      <p><strong>Date d'échéance:</strong> {{ selectedTask.dateEcheance | date:'dd MMM yyyy, HH:mm' }}</p>
+      <button (click)="closeTaskDetails()">Fermer</button>
+    </div>
+  </div>
+</div>

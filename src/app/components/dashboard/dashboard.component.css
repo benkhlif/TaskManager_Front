@@ -1,0 +1,166 @@
+.dashboard {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #B3D1FF;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 20%;
+}
+
+.stat-card p {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Section de la progression des tâches avec barre */
+.progress-section {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .progress-section h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  .progress-bar .percentage {
+    position: absolute;
+    font-size: 1em;
+  }
+  
+ 
+ 
+/* Section des tâches à venir et en retard */
+.tasks-sections {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.tasks-section {
+    width: 46%;
+    background-color: #dae6f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-section h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    font-weight: lighter;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center; /* Centre l'icône et le texte */
+
+}
+
+ 
+
+.task-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #f0f0f0;
+}
+
+.task-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-item.upcoming {
+    border-left: 5px solid #070268;
+}
+
+.task-item.overdue {
+    border-left: 5px solid #2226a4;
+}
+
+/* Modal des détails de la tâche */
+.task-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    z-index: 1001;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,19 @@
+.calendar-container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  select {
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  full-calendar {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+  }
+  

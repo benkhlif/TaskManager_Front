@@ -11,24 +11,36 @@ import { UserService } from 'src/app/services/user.service';
 export class CreerUserComponent {
   user: any = {};  // Objet utilisateur vide pour le formulaire
   roles: string[] = ['EMPLOYE', 'MANAGER', 'ChefProjet'];  // Liste des rôles possibles
+isLoading: any;
 
   constructor(
-    private userService: UserService,
-    private authService: AuthService,
+     private authService: AuthService,
     private router: Router
   ) {}
 
   // Soumettre le formulaire pour créer l'utilisateur
-  onSubmit(): void {
-    this.authService.register(this.user).subscribe({
-      next: () => {
-        alert('Utilisateur créé avec succès');
-        this.router.navigate(['/users']);  // Redirige vers la liste des utilisateurs après la création
-      },
-      error: (err) => {
-        alert('Erreur lors de la création de l\'utilisateur');
-        console.error('Erreur:', err);
-      }
-    });
-  }
+ 
+onSubmit(): void {
+  this.isLoading = true;  // Désactiver le bouton
+  
+  this.authService.register(this.user).subscribe({
+    next: () => {
+      alert('Utilisateur créé avec succès. Un mot de passe a été envoyé par email.');
+
+      this.user = {}; // Réinitialisation du formulaire
+      this.isLoading = false; // Réactiver le bouton
+
+      setTimeout(() => {
+        this.router.navigate(['/users']).then(() => {
+          window.location.reload();
+        });
+      }, 500);
+    },
+    error: (err) => {
+      alert('Erreur lors de la création de l\'utilisateur');
+      console.error('Erreur:', err);
+      this.isLoading = false; // Réactiver le bouton si erreur
+    }
+  });
+}
 }

@@ -1,38 +1,160 @@
+/* Conteneur principal */
 .login-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    background: #f9f9f9;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #80acf5; /* Fond bleu clair */
+  position: relative;
+  overflow: hidden;
+}
+
+ 
+.background li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.317);
+  animation: animate 15s linear infinite;
+  border-radius: 50%;
+}
+ 
+
+/* Exemple pour les 5 premières boules (les positions et délais sont personnalisables) */
+.background li:nth-child(1) {
+  left: 12%;
+  width: 90px;
+  height: 90px;
+  bottom: -90px;
+  animation-delay: 0s;
+}
+
+.background li:nth-child(2) {
+  left: 30%;
+  width: 60px;
+  height: 60px;
+  bottom: -60px;
+  animation-delay: 2s;
+}
+
+ 
+.background li:nth-child(4) {
+  left: 70%;
+  width: 80px;
+  height: 80px;
+  bottom: -80px;
+  animation-delay: 1s;
+}
+
+.background li:nth-child(5) {
+  left: 90%;
+  width: 110px;
+  height: 110px;
+  bottom: -110px;
+  animation-delay: 3s;
+}
+.background li:nth-child(6) {
+  left: 110%;
+  width: 110px;
+  height: 110px;
+  bottom: -110px;
+  animation-delay: 3s;
+}
+/* Ajoute des styles pour d'autres éléments si nécessaire, jusqu'à nth-child(22) ou plus */
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
   }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
   }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background: #aaa;
-    cursor: not-allowed;
-  }
-  
+}
+
+/* Style de la carte de connexion */
+.login-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  position: relative;
+ }
+
+/* Titre et sous-titre */
+.login-title {
+  font-size: 24px;
+  color: #2a5298;
+  margin-bottom: 10px;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* Champs de saisie */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.input-group i {
+  color: #2a5298;
+  margin-right: 10px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.input-group input::placeholder {
+  color: #aaa;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* Bouton de connexion */
+.login-button {
+  background-color: #2a5298;
+  color: white;
+  padding: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #1f3b73;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}

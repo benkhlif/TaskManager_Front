@@ -22,6 +22,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { CalendrierComponent } from './components/calendrier/calendrier.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -40,11 +45,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FicheTaskComponent,
     NavbarComponent,
     LoginComponent,
+    DashboardComponent,
+    NotificationsComponent,
+    CalendrierComponent,
    ],
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule,
-     HttpClientModule  ,ReactiveFormsModule, BrowserAnimationsModule, MatSnackBarModule,  
+     HttpClientModule  ,ReactiveFormsModule, BrowserAnimationsModule, MatSnackBarModule, MatDialogModule,
+     FullCalendarModule,
   ],
   providers: [DatePipe],  
     bootstrap: [AppComponent]

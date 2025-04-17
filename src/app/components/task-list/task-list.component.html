@@ -1,6 +1,8 @@
 <div class="task-list-container">
-   <button (click)="onCreate()" class="btn btn-success create-btn">+ Ajouter une Tâche</button>
-
+  <button *ngIf="userRole === 'ChefProjet'" (click)="onCreate()" class="btn btn-success create-btn">
+    + Ajouter une Tâche
+  </button>
+  
   <div *ngIf="errorMessage" class="error">
     {{ errorMessage }}
   </div>

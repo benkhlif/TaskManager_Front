@@ -37,7 +37,7 @@ export class LoginComponent {
         this.router.navigate(['/tasks']); // Redirige vers la page après connexion
       },
       error: (err) => {
-        this.errorMessage = 'Email ou mot de passe incorrect';
+        this.errorMessage = 'Identifiants incorrects. Veuillez réessayer.';
         this.loading = false;
       }
     });

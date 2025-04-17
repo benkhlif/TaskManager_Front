@@ -24,9 +24,10 @@ export class ProjetListComponent implements OnInit {
   userRole: string | null = null;
 
   ngOnInit(): void {
-    this.getProjets();
+    this.getProjets(); this.userRole = this.authService.getRole(); 
   }
-
+   
+  
   // Charger les tâches et compléter les infos si nécessaire
   getProjets(): void {
     const role = this.authService.getRole();  // Vous devez avoir une méthode pour récupérer le rôle de l'utilisateur
@@ -89,41 +90,37 @@ export class ProjetListComponent implements OnInit {
     get projetsTermines(): Projet[] {
       return this.projets?.filter(t => t.statut === 'TERMINEE') || [];
     }
-   
-
-   
-supprimer(projetId: number): void {
-  if (this.userRole !== 'MANAGER') {
-    this.snackBar.open("⛔ Accès refusé : vous n'avez pas les droits pour supprimer un projet.", 'Fermer', {
-      duration: 3000,
-      verticalPosition: 'top',  // Affiche en haut de l'écran
-      horizontalPosition: 'center', // Centré horizontalement
-      panelClass: ['red-snackbar']
-    });
-    return;
-  }
-
-  if (confirm('Êtes-vous sûr de vouloir supprimer ce projet ?')) {
-    this.projetService.deleteProjet(projetId).subscribe({
-      next: () => {
-        this.snackBar.open('✅ Projet supprimé avec succès', 'Fermer', {
+ 
+    supprimer(projetId: number): void {
+      if (this.userRole !== 'MANAGER') {
+        this.snackBar.open("⛔ Accès refusé : vous n'avez pas les droits pour supprimer un projet.", 'Fermer', {
           duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center',
-          panelClass: ['green-snackbar']
+          
         });
-        this.getProjets();
-      },
-      error: (err) => {
-        this.snackBar.open('❌ Erreur lors de la suppression du projet', 'Fermer', {
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center',
-          panelClass: ['red-snackbar']
-        });
-        console.error('Erreur:', err);
+        return;
       }
-    });
-  }
-}
+    
+      if (confirm('Êtes-vous sûr de vouloir supprimer ce projet ?')) {
+        this.projetService.deleteProjet(projetId).subscribe({
+          next: () => {
+            this.snackBar.open('✅ Projet supprimé avec succès', 'Fermer', {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+              panelClass: ['green-snackbar']
+            });
+            this.getProjets();
+          },
+          error: (err) => {
+            this.snackBar.open('❌ Erreur lors de la suppression du projet', 'Fermer', {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+              panelClass: ['red-snackbar']
+            });
+            console.error('Erreur:', err);
+          }
+        });
+      }
+    }
 }

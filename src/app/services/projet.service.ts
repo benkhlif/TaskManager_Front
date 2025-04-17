@@ -34,7 +34,6 @@ export class ProjetService {
   getProjets(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl, { headers: this.getHeaders() });
   }
-
   /** Récupérer tous les projets
   getProjets(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl);

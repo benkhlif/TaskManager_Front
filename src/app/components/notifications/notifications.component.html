@@ -1,0 +1,17 @@
+<div class="notifications-container">
+  <h3>📢 Notifications</h3>
+  <ul *ngIf="notifications.length > 0; else noNotifications">
+    <li *ngFor="let notification of notifications" 
+        [class.read]="notification.isRead" 
+        (click)="onNotificationClick(notification)"
+        [class.unread]="!notification.isRead">
+      <span class="icon">{{ getIcon(notification) }}</span>
+      <span>{{ notification.message }}</span>
+      <span *ngIf="!notification.isRead" class="new-notification">Nouveau</span>
+    </li>
+  </ul>
+  
+  <ng-template #noNotifications>
+    <p class="no-notifications">Aucune notification pour le moment.</p>
+  </ng-template>
+</div>

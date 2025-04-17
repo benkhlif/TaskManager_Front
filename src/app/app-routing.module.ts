@@ -14,6 +14,9 @@ import { ModifierTaskComponent } from './components/modifier-task/modifier-task.
 import { FicheTaskComponent } from './components/fiche-task/fiche-task.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { CalendrierComponent } from './components/calendrier/calendrier.component';
  
 const routes: Routes = [
   { path: "tasks", component: TaskListComponent },
@@ -29,8 +32,10 @@ const routes: Routes = [
   { path: 'modifiertask/:id', component: ModifierTaskComponent } ,
   { path: 'fichetask/:id', component: FicheTaskComponent } ,
   { path: 'navbar', component: NavbarComponent } ,
-  { path: 'login', component: LoginComponent } 
-
+  { path: 'login', component: LoginComponent } ,
+  { path: 'statistique', component: DashboardComponent } ,
+  { path: 'notification', component: NotificationsComponent } ,
+  { path: 'calendrier', component: CalendrierComponent } 
 
 ];
 

@@ -12,6 +12,18 @@ import { AuthService } from './auth.service';
   projet?: { id: number, nom?: string };  
 
 }
+
+
+export interface DashboardStats {
+  tasksInProgress: number;
+  tasksCompleted: number;
+  tasksToDo: number;
+  upcomingTasks: Array<{ id: number; titre: string; dateEcheance: string }>; // Ajout de `id`
+  overdueTasks: Array<{ id: number; titre: string; dateEcheance: string }>; // Ajout des tâches en retard
+  progress: number;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -70,5 +82,12 @@ export class TaskService {
   // 🔹 Récupérer les tâches d'un projet spécifique
   getTasksByProject(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/byProject/${id}`, { headers: this.getHeaders() });
+  }
+
+ 
+
+  // 🔹 Récupérer les tâches de l'employee connecté
+  getDashbord(): Observable<DashboardStats> {
+    return this.http.get<DashboardStats>(`${this.apiUrl}/dashboard/me`, { headers: this.getHeaders() });
   }
 }
