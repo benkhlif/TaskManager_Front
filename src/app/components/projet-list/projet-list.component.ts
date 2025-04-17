@@ -30,24 +30,20 @@ export class ProjetListComponent implements OnInit {
   
   // Charger les tâches et compléter les infos si nécessaire
   getProjets(): void {
-    const role = this.authService.getRole();  // Vous devez avoir une méthode pour récupérer le rôle de l'utilisateur
-
+    const role = this.authService.getRole();
+  
+    const onSuccess = (projets: any[]) => {
+      this.projets = projets;
+      projets.forEach(projet => this.fetchChefProjetDetails(projet));  
+    };
+  
     if (role === 'MANAGER') {
-      this.projetService.getProjets().subscribe(
-        projets => this.projets = projets,
-        error => this.errorMessage = 'Erreur de chargement des tâches.'
-      );
+      this.projetService.getProjets().subscribe(onSuccess, err => this.errorMessage = 'Erreur de chargement');
     } else if (role === 'ChefProjet') {
-      this.projetService.getMyProjets().subscribe(
-        projets => this.projets = projets,
-        error => this.errorMessage = 'Erreur de chargement des tâches.'
-      );
-    }
-    else {
-      this.errorMessage = 'Rôle inconnu ou non autorisé.';
+      this.projetService.getMyProjets().subscribe(onSuccess, err => this.errorMessage = 'Erreur de chargement');
     }
   }
-
+  
  // getProjets(): void {
    // this.projetService.getMyProjets().subscribe(
     // (data) => {

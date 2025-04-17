@@ -61,7 +61,7 @@ export class NotificationsComponent implements OnInit {
     this.notificationService.markAsRead(notificationId).subscribe({
       next: () => {
         // Mise à jour locale de la notification pour qu'elle soit marquée comme lue
-        const notification = this.notifications.find(n => n.id === notificationId);
+        const notification = this.notifications.find(n => n.notificationId === notificationId);
         if (notification) {
           notification.isRead = true;  // Mettre à jour le champ 'isRead'
         }
