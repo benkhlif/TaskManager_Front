@@ -1,27 +1,63 @@
-# Front
+✅ Application de Gestion de Tâches – Frontend Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+ 
+📄 Description
 
-## Development server
+Frontend Angular pour une plateforme de gestion de projets et de tâches en entreprise. Trois rôles définis : Manager, Chef de projet et Employé. L’interface inclut un calendrier interactif, un système de notifications en temps réel et une authentification sécurisée (JWT).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+✨ Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🔐 Authentification sécurisée (JWT)
 
-## Build
+👥 Trois rôles : Manager, Chef de projet, Employé
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+🗂️ Gestion des projets et des tâches
 
-## Running unit tests
+📅 Calendrier interactif pour visualiser les échéances
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+🔔 Notifications en temps réel pour les tâches urgentes ou en retard
 
-## Running end-to-end tests
+📊 Tableau de bord avec statistiques d’avancement
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+🖥️ Interface responsive et moderne (Angular Material)
+📸 Captures d'écran de l'application
+🔐 Page de connexion
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Interface sécurisée permettant aux utilisateurs de se connecter à leur compte.
+
+📁 Gestion des projets
+
+
+Tableau de bord pour créer, modifier et suivre l'avancement des projets.
+
+✅ Gestion des tâches
+
+
+Liste des tâches avec options de filtrage par statut, priorité et échéance.
+
+👥 Gestion des comptes utilisateurs
+
+
+Interface d'administration pour gérer les utilisateurs, leurs rôles et permissions.
+
+📧 E-mail de bienvenue avec identifiants
+
+
+Exemple d'e-mail envoyé à un nouvel utilisateur contenant ses identifiants de connexion et un mot de passe généré automatiquement.
+
+📆 Calendrier des tâches
+
+
+Vue calendrier intégrée pour visualiser les tâches et leurs échéances.
+
+📊 Statistiques et suivi
+
+
+Graphiques et indicateurs pour suivre la progression des projets et des tâches.
+
+🔔 Notifications
+
+
+Centre de notifications informant les utilisateurs des mises à jour et des rappels importants.
