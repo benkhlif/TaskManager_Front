@@ -1,5 +1,5 @@
-✅ Application de Gestion de Tâches – Frontend Angular
-
+✅ TaskManager / Application de Gestion de Tâches – Frontend Angular
+---
  
 📄 Description
 
@@ -8,7 +8,7 @@ Frontend Angular pour une plateforme de gestion de projets et de tâches en entr
 
 ✨ Features
 
-🔐 Authentification sécurisée (JWT)
+ ## 🔐 Authentification sécurisée (JWT)
 
 👥 Trois rôles : Manager, Chef de projet, Employé
 
@@ -22,42 +22,48 @@ Frontend Angular pour une plateforme de gestion de projets et de tâches en entr
 
 🖥️ Interface responsive et moderne (Angular Material)
 📸 Captures d'écran de l'application
-🔐 Page de connexion
+ ## 🔑 Page de connexion
 
+![Page de connexion](https://github.com/user-attachments/assets/0bb0a667-925b-415d-9411-50f99b8b7926)
 
-Interface sécurisée permettant aux utilisateurs de se connecter à leur compte.
+---
 
-📁 Gestion des projets
+## 📁 Gestion de projets
 
+![Gestion de projets](https://github.com/user-attachments/assets/0a8274dd-e16f-4976-af60-ac7cfe680a77)
 
-Tableau de bord pour créer, modifier et suivre l'avancement des projets.
+---
 
-✅ Gestion des tâches
+## ✅ Gestion des tâches
 
+![Gestion des tâches](https://github.com/user-attachments/assets/0d0f00bb-2ac6-464a-844c-d678154793f6)
 
-Liste des tâches avec options de filtrage par statut, priorité et échéance.
+---
 
-👥 Gestion des comptes utilisateurs
+## 👤 Gestion des comptes
 
+![Gestion des comptes](https://github.com/user-attachments/assets/985556fb-5939-4574-a507-32e1d495267e)
 
-Interface d'administration pour gérer les utilisateurs, leurs rôles et permissions.
+---
 
-📧 E-mail de bienvenue avec identifiants
+## 📧 E-mail de bienvenue avec identifiants
 
+![E-mail de bienvenue](https://github.com/user-attachments/assets/40285c84-4eb4-4aea-8066-3a4f8d567464)
 
-Exemple d'e-mail envoyé à un nouvel utilisateur contenant ses identifiants de connexion et un mot de passe généré automatiquement.
+---
 
-📆 Calendrier des tâches
+## 📅 Calendrier
 
+![Calendrier](https://github.com/user-attachments/assets/04a06119-1353-48fb-987b-724cfd8d5bb0)
 
-Vue calendrier intégrée pour visualiser les tâches et leurs échéances.
+---
 
-📊 Statistiques et suivi
+## 📊 Statistiques et suivi
 
+![Statistiques et suivi](https://github.com/user-attachments/assets/087fee44-d995-4e15-98bc-70fe53551687)
 
-Graphiques et indicateurs pour suivre la progression des projets et des tâches.
+---
 
-🔔 Notifications
+## 🔔 Notifications
 
-
-Centre de notifications informant les utilisateurs des mises à jour et des rappels importants.
+![Notifications](https://github.com/user-attachments/assets/805c788a-a325-471e-b5f5-a3a17cde7f31)
