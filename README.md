@@ -7,8 +7,9 @@ Frontend Angular pour une plateforme de gestion de projets et de tâches en entr
 
 
 ✨ Features
+ 
 
- ## 🔐 Authentification sécurisée (JWT)
+🔐 Authentification sécurisée (JWT)
 
 👥 Trois rôles : Manager, Chef de projet, Employé
 
@@ -21,6 +22,8 @@ Frontend Angular pour une plateforme de gestion de projets et de tâches en entr
 📊 Tableau de bord avec statistiques d’avancement
 
 🖥️ Interface responsive et moderne (Angular Material)
+---
+
 📸 Captures d'écran de l'application
  ## 🔑 Page de connexion
 
@@ -67,3 +70,9 @@ Frontend Angular pour une plateforme de gestion de projets et de tâches en entr
 ## 🔔 Notifications
 
 ![Notifications](https://github.com/user-attachments/assets/805c788a-a325-471e-b5f5-a3a17cde7f31)
+
+## 🎨 Mon approche design
+
+Ce projet a été conçu pour répondre aux besoins réels de gestion de tâches en entreprise, en privilégiant la clarté, la cohérence et la simplicité de l’interface utilisateur.  
+Chaque composant a été structuré selon des principes de lisibilité et de maintenabilité, avec pour objectif d’offrir une expérience rapide et intuitive à chaque rôle (Manager, Chef de projet, Employé).  
+L’interface reste épurée et fluide, permettant une prise en main immédiate et un parcours utilisateur optimisé. 
